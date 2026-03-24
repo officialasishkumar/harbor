@@ -30,7 +30,7 @@ type Artifact struct {
 	artifact.Artifact
 	// TODO: rename to VulOverview
 	ScanOverview map[string]any `json:"scan_overview"`
-	SBOMOverView map[string]any `json:"sbom_overview"`
+	SBOMOverview map[string]any `json:"sbom_overview"`
 }
 
 // ToSwagger converts the artifact to the swagger model
@@ -88,8 +88,8 @@ func (a *Artifact) ToSwagger() *models.Artifact {
 			art.ScanOverview[key] = summary
 		}
 	}
-	if len(a.SBOMOverView) > 0 {
-		js, err := json.Marshal(a.SBOMOverView)
+	if len(a.SBOMOverview) > 0 {
+		js, err := json.Marshal(a.SBOMOverview)
 		if err != nil {
 			log.Warningf("convert sbom summary failed, error: %v", err)
 		}

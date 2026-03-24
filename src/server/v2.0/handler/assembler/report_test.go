@@ -98,8 +98,8 @@ func (suite *VulAssemblerTestSuite) TestAssembleSBOMOverview() {
 	var artifact model.Artifact
 	err := assembler.WithArtifacts(&artifact).Assemble(context.TODO())
 	suite.Nil(err)
-	suite.Equal(artifact.SBOMOverView["sbom_digest"], "sha256:123456")
-	suite.Equal(artifact.SBOMOverView["scan_status"], "Success")
+	suite.Equal(artifact.SBOMOverview["sbom_digest"], "sha256:123456")
+	suite.Equal(artifact.SBOMOverview["scan_status"], "Success")
 
 }
 
@@ -128,13 +128,13 @@ func (suite *VulAssemblerTestSuite) TestAssembleSBOMOverviewImageIndex() {
 	var artifact model.Artifact
 	err := assembler.WithArtifacts(&artifact).Assemble(context.TODO())
 	suite.Nil(err)
-	suite.Nil(artifact.SBOMOverView["scan_status"])
+	suite.Nil(artifact.SBOMOverview["scan_status"])
 
 	mock.OnAnything(exeMgr, "List").Return(nil, nil).Once()
 	var artifact2 model.Artifact
 	err2 := assembler.WithArtifacts(&artifact2).Assemble(context.TODO())
 	suite.Nil(err2)
-	suite.Nil(artifact2.SBOMOverView, "sbom overview should be nil")
+	suite.Nil(artifact2.SBOMOverview, "sbom overview should be nil")
 }
 
 func TestVulAssemblerTestSuite(t *testing.T) {

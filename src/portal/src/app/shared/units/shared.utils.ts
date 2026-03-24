@@ -77,7 +77,7 @@ export const accessErrorHandler = function (
     return false;
 };
 
-// Provide capability of reconstructing the query paramter
+// Provide capability of reconstructing the query parameter
 export const maintainUrlQueryParmas = function (
     uri: string,
     key: string,
